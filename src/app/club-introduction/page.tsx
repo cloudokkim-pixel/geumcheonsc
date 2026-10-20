@@ -11,6 +11,8 @@ type CoachData = {
   role: string;
   career: string;
   philosophy: string;
+  playerCareer?: string[];
+  coachingCareer?: string[];
 };
 
 type ClubIntroCopy = {
@@ -30,6 +32,7 @@ type ClubIntroCopy = {
   coachLabel: string;
   coachTitle: [string, string];
   coachSub: string;
+  coachProfileLabels: { player: string; coaching: string; philosophy: string };
   coaches: CoachData[];
   activityLabel: string;
   activityTitle: [string, string];
@@ -98,6 +101,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["선수의 곁에서", "함께하는 사람들"],
     coachSub: "G.C.S.C의 지도자는 가르치는 사람이 아닙니다. 선수의 길을 함께 설계하는 파트너입니다.",
+    coachProfileLabels: { player: "선수경력", coaching: "지도경력", philosophy: "지도 철학" },
     coaches: [
       {
         name: "천경필",
@@ -108,8 +112,10 @@ const copy: Record<Locale, ClubIntroCopy> = {
       {
         name: "김한석",
         role: "감독",
-        career: "이력 준비 중",
-        philosophy: "\"지도 철학 준비 중\"",
+        career: "아시아청소년대표 · 연세대학교 · 경찰청축구단",
+        playerCareer: ["숭실고", "아시아청소년대표", "연세대학교", "경찰청축구단"],
+        coachingCareer: ["레알마드리드 한국 지사 총감독", "신천중학교 코치", "NS주니어 U12 감독", "서울동작FC U15 코치", "금천축구클럽 U15 감독"],
+        philosophy: "단순히 승리만을 쫓는 팀이 아닌, 탁월한 성장 시스템과 문화를 통해 모든 선수가 꿈꾸고 선망하는 팀으로 나아가는 것, 그것이 저의 변하지 않는 지도 철학입니다",
       },
       { name: "코치명 준비 중", role: "코치", career: "이력 준비 중", philosophy: "\"지도 철학 준비 중\"" },
       { name: "코치명 준비 중", role: "코치", career: "이력 준비 중", philosophy: "\"지도 철학 준비 중\"" },
@@ -189,6 +195,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["The people who walk", "alongside every player"],
     coachSub: "Our coaches are not teachers. They are partners who design the player's path together.",
+    coachProfileLabels: { player: "Playing Career", coaching: "Coaching Career", philosophy: "Coaching Philosophy" },
     coaches: [
       {
         name: "Cheon Gyeong-pil",
@@ -199,8 +206,10 @@ const copy: Record<Locale, ClubIntroCopy> = {
       {
         name: "Kim Han-seok",
         role: "Head Coach",
-        career: "Career TBD",
-        philosophy: "\"Philosophy TBD\"",
+        career: "Asia Youth National Team · Yonsei University · Police FC",
+        playerCareer: ["Soongsil High School", "Asia Youth National Team", "Yonsei University", "Police FC"],
+        coachingCareer: ["Real Madrid Korea Branch General Director", "Sincheon Middle School Coach", "NS Junior U12 Head Coach", "Seoul Dongjak FC U15 Coach", "Geumcheon Football Club U15 Head Coach"],
+        philosophy: "My unwavering coaching philosophy is to build a team that does not simply chase victories, but becomes a team every player dreams of and looks up to through an excellent growth system and culture.",
       },
       { name: "Coach TBD", role: "Coach", career: "Career TBD", philosophy: "\"Philosophy TBD\"" },
       { name: "Coach TBD", role: "Coach", career: "Career TBD", philosophy: "\"Philosophy TBD\"" },
@@ -280,6 +289,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["選手のそばで", "共に歩む人たち"],
     coachSub: "G.C.S.Cの指導者は教える人ではありません。選手の道を共に設計するパートナーです。",
+    coachProfileLabels: { player: "選手経歴", coaching: "指導経歴", philosophy: "指導哲学" },
     coaches: [
       {
         name: "チョン・ギョンピル",
@@ -290,8 +300,10 @@ const copy: Record<Locale, ClubIntroCopy> = {
       {
         name: "キム・ハンソク",
         role: "監督",
-        career: "経歴 準備中",
-        philosophy: "\"指導哲学 準備中\"",
+        career: "アジアユース代表 · 延世大学校 · 警察庁サッカー団",
+        playerCareer: ["崇実高校", "アジアユース代表", "延世大学校", "警察庁サッカー団"],
+        coachingCareer: ["レアル・マドリード韓国支社 総監督", "新川中学校 コーチ", "NSジュニア U12 監督", "ソウル東作FC U15 コーチ", "衿川サッカークラブ U15 監督"],
+        philosophy: "単に勝利だけを追うチームではなく、優れた成長システムと文化を通じて、すべての選手が夢見て憧れるチームへ進むこと。それが私の変わらない指導哲学です。",
       },
       { name: "コーチ名 準備中", role: "コーチ", career: "経歴 準備中", philosophy: "\"指導哲学 準備中\"" },
       { name: "コーチ名 準備中", role: "コーチ", career: "経歴 準備中", philosophy: "\"指導哲学 準備中\"" },
@@ -371,6 +383,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["陪伴在球员身旁的", "那些人"],
     coachSub: "G.C.S.C的教练不是传授者，而是与球员共同规划道路的伙伴。",
+    coachProfileLabels: { player: "球员经历", coaching: "执教经历", philosophy: "执教理念" },
     coaches: [
       {
         name: "千庆弼",
@@ -381,8 +394,10 @@ const copy: Record<Locale, ClubIntroCopy> = {
       {
         name: "金汉石",
         role: "主教练",
-        career: "履历准备中",
-        philosophy: "\"执教理念准备中\"",
+        career: "亚洲青年代表 · 延世大学 · 警察厅足球队",
+        playerCareer: ["崇实高中", "亚洲青年代表", "延世大学", "警察厅足球队"],
+        coachingCareer: ["皇家马德里韩国分部总教练", "新川中学教练", "NS Junior U12 主教练", "首尔铜雀FC U15 教练", "衿川足球俱乐部 U15 主教练"],
+        philosophy: "不是单纯追逐胜利，而是通过卓越的成长系统和文化，成为所有球员梦想并向往的球队。这是我始终不变的执教理念。",
       },
       { name: "教练名 准备中", role: "教练", career: "履历准备中", philosophy: "\"执教理念准备中\"" },
       { name: "教练名 准备中", role: "教练", career: "履历准备中", philosophy: "\"执教理念准备中\"" },
@@ -416,6 +431,128 @@ const ACTIVITY_CATEGORIES = [
 
 type CategoryKey = (typeof ACTIVITY_CATEGORIES)[number]["key"];
 type PhotoMap = Record<CategoryKey, string | null>;
+
+type CoachCardProps = {
+  coach: CoachData;
+  i: number;
+  labels: { player: string; coaching: string; philosophy: string };
+};
+
+function CoachCard({ coach, i, labels }: CoachCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const careerPanelId = `coach-career-${i}`;
+  const photoSrc =
+    i === 0 ? "/staff/coach-cheon-goldpoint-1024x1440.png" :
+    i === 1 ? "/staff/coach-hanseok-goldpoint-1024x1440.png" :
+    null;
+  const isRegistered = photoSrc !== null;
+  const hasCareers = !!(coach.playerCareer || coach.coachingCareer);
+  const hasBothCareers = !!(coach.playerCareer && coach.coachingCareer);
+
+  return (
+    <div
+      className="overflow-hidden rounded-[14px] border border-[#2a2a2a] bg-[#1c1c1c]"
+    >
+      {/* 카드 본체: 사진(좌) + 정보(우) */}
+      <div className="flex min-h-[160px]">
+        {/* 프로필 사진 영역 */}
+        <div className="relative w-[160px] shrink-0 self-stretch overflow-hidden bg-[#161616] sm:w-[180px]">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.16]">
+            <Image src="/gallery/gclogo.png" alt="" width={120} height={120} className="object-contain" />
+          </div>
+          {photoSrc && (
+            <Image
+              src={photoSrc}
+              alt={coach.name}
+              fill
+              className="object-cover object-top"
+              sizes="180px"
+            />
+          )}
+        </div>
+
+        {/* 정보 영역 */}
+        <div className="flex flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
+          <p className={`text-[18px] font-black leading-tight ${isRegistered ? "text-[#f5f5f7]" : "text-[#444]"}`}>
+            {coach.name}
+          </p>
+          <p className={`mt-0.5 text-[10px] font-bold uppercase tracking-[0.14em] ${isRegistered ? "text-[#cc2222]" : "text-[#383838]"}`}>
+            {coach.role}
+          </p>
+          <p className={`mt-3 text-[12px] leading-[1.55] ${isRegistered ? "text-[#666]" : "text-[#3a3a3a]"}`}>
+            {coach.career}
+          </p>
+          <p
+            className={`mt-2 text-[12px] italic leading-[1.6] ${isRegistered ? "text-[#a1a1a6]" : "text-[#3a3a3a]"}`}
+            style={!isOpen ? { display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" } : undefined}
+          >
+            {coach.philosophy}
+          </p>
+        </div>
+      </div>
+
+      {/* 하단 인디케이터 바 */}
+      {hasCareers && (
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls={careerPanelId}
+          onClick={() => setIsOpen((v) => !v)}
+          className={`flex w-full items-center justify-center gap-1.5 border-t py-3 transition-colors ${
+          isOpen ? "border-[#3a1a1a] bg-[#1a0a0a]" : "border-[#3a1a1a] bg-[#191414]"
+        }`}
+        >
+          <span className={`text-[11px] font-bold uppercase tracking-[0.16em] ${isOpen ? "text-[#cc2222]" : "text-[#cc4444]"}`}>
+            {isOpen ? "접기" : "경력 보기"}
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+               className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
+            <path d="M6 9l6 6 6-6" stroke={isOpen ? "#cc2222" : "#cc4444"}
+                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      )}
+
+      {/* 펼침: 경력 리스트 */}
+      {isOpen && hasCareers && (
+        <div id={careerPanelId} className="border-t border-[#2a2a2a] px-5 pb-5 pt-4">
+          <div className={`grid gap-5 ${hasBothCareers ? "sm:grid-cols-2" : ""}`}>
+            {coach.playerCareer && (
+              <div>
+                <p className="mb-2.5 text-[9px] font-bold uppercase tracking-[0.16em] text-[#cc2222]">
+                  {labels.player}
+                </p>
+                <ul className="space-y-1.5">
+                  {coach.playerCareer.map((item) => (
+                    <li key={item} className="flex gap-2 text-[13px] leading-[1.5] text-[#bbb]">
+                      <span className="mt-[0.45em] h-1 w-1 shrink-0 rounded-full bg-[#cc2222]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {coach.coachingCareer && (
+              <div>
+                <p className="mb-2.5 text-[9px] font-bold uppercase tracking-[0.16em] text-[#cc2222]">
+                  {labels.coaching}
+                </p>
+                <ul className="space-y-1.5">
+                  {coach.coachingCareer.map((item) => (
+                    <li key={item} className="flex gap-2 text-[13px] leading-[1.5] text-[#bbb]">
+                      <span className="mt-[0.45em] h-1 w-1 shrink-0 rounded-full bg-[#cc2222]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ClubIntroductionPage() {
   const { locale } = useSiteLanguage();
@@ -561,34 +698,11 @@ export default function ClubIntroductionPage() {
             <span className="text-[#cc2222]">{t.coachTitle[1]}</span>
           </h2>
           <p className="mb-10 text-sm leading-[1.8] text-[#6e6e73]">{t.coachSub}</p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {t.coaches.map((coach, i) => {
-              const photoSrc =
-                i === 0 ? "/staff/coach-cheon-goldpoint-1024x1440.png" :
-                i === 1 ? "/staff/coach-hanseok-goldpoint-1024x1440.png" :
-                null;
-              return (
-                <div key={i} className="flex overflow-hidden rounded-[4px] bg-[#1c1c1e]">
-                  {/* 프로필 사진 + 로고 배경 */}
-                  <div className="relative w-28 shrink-0 bg-[#232323] sm:w-32">
-                    {/* 배경 로고 워터마크 — 사진 뒤 */}
-                    <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-[0.18]">
-                      <Image src="/gallery/gclogo.png" alt="" width={96} height={96} className="object-contain" />
-                    </div>
-                    {photoSrc ? (
-                      <Image src={photoSrc} alt={coach.name} fill className="z-10 object-cover object-top" sizes="128px" />
-                    ) : null}
-                  </div>
-                  {/* 정보 */}
-                  <div className="flex flex-col px-4 py-5">
-                    <p className="mb-1 min-h-[1.25rem] text-sm font-bold text-[#f5f5f7]">{coach.name}</p>
-                    <p className="mb-3 min-h-[1rem] text-[10px] font-bold uppercase tracking-[0.06em] text-[#cc2222]">{coach.role}</p>
-                    <p className="mb-2 min-h-[2.75rem] text-[11px] leading-[1.6] text-[#6e6e73]">{coach.career}</p>
-                    <p className="min-h-[2.25rem] text-[11px] italic leading-[1.6] text-[#a1a1a6]">{coach.philosophy}</p>
-                  </div>
-                </div>
-              );
-            })}
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {t.coaches.map((coach, i) => (
+              <CoachCard key={i} coach={coach} i={i} labels={t.coachProfileLabels} />
+            ))}
           </div>
         </div>
       </section>
