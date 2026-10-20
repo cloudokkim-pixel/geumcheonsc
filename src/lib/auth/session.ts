@@ -1,4 +1,4 @@
-﻿import { createHmac, timingSafeEqual } from "crypto";
+﻿import { createHash, createHmac, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 
 type AdminSessionPayload = {
@@ -10,7 +10,9 @@ type AdminSessionPayload = {
 const sessionCookieName = "GCSC_admin_session";
 
 function getSessionSecret() {
-  return process.env.ADMIN_SESSION_SECRET || "dev-only-admin-session-secret-change-me";
+  const secret = process.env.ADMIN_SESSION_SECRET;
+  if (!secret) throw new Error("ADMIN_SESSION_SECRET 환경 변수가 설정되지 않았습니다.");
+  return secret;
 }
 
 function toBase64Url(value: string) {
@@ -66,15 +68,26 @@ export function verifyAdminSessionToken(token?: string | null) {
 }
 
 export function getAdminCredentials() {
-  return {
-    username: process.env.ADMIN_LOGIN_ID || "gcadmin@local.dev",
-    password: process.env.ADMIN_LOGIN_PASSWORD || "8888",
-  };
+  const username = process.env.ADMIN_LOGIN_ID;
+  const password = process.env.ADMIN_LOGIN_PASSWORD;
+  if (!username || !password) {
+    throw new Error("ADMIN_LOGIN_ID / ADMIN_LOGIN_PASSWORD 환경 변수가 설정되지 않았습니다.");
+  }
+  return { username, password };
+}
+
+// 길이 정보 유출 방지를 위해 SHA-256 해시로 길이를 맞춘 뒤 비교
+function safeEqual(a: string, b: string) {
+  const ha = createHash("sha256").update(a).digest();
+  const hb = createHash("sha256").update(b).digest();
+  return timingSafeEqual(ha, hb);
 }
 
 export function isValidAdminLogin(username: string, password: string) {
   const credentials = getAdminCredentials();
-  return username === credentials.username && password === credentials.password;
+  const userOk = safeEqual(username, credentials.username);
+  const passOk = safeEqual(password, credentials.password);
+  return userOk && passOk;
 }
 
 export function getSessionCookieName() {

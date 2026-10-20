@@ -28,16 +28,7 @@ export async function POST(req: NextRequest) {
   // 이메일 발송 (환경변수 설정 시 활성화)
   // TODO: nodemailer 또는 Resend/SendGrid 연동
   // 현재는 콘솔 로그 및 200 응답만 반환
-  console.log("[apply]", {
-    name: name.trim(),
-    school: school.trim(),
-    grade,
-    contact: contact.trim(),
-    ageGroup,
-    position: body.position ?? "",
-    message: body.message ?? "",
-    submittedAt: new Date().toISOString(),
-  });
+  console.log("[apply]", { grade, ageGroup, submittedAt: new Date().toISOString() }); // PII 제외
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }

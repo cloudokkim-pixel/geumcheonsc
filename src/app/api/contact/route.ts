@@ -23,13 +23,7 @@ export async function POST(req: NextRequest) {
   }
 
   // 이메일 발송 — nodemailer / Resend 연동 시 활성화
-  console.log("[contact]", {
-    name: name.trim(),
-    contact: contact.trim(),
-    inquiryType: inquiryType.trim(),
-    detail: body.detail?.trim() ?? "",
-    submittedAt: new Date().toISOString(),
-  });
+  console.log("[contact]", { inquiryType: inquiryType.trim(), submittedAt: new Date().toISOString() }); // PII 제외
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
