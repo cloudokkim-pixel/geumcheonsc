@@ -32,7 +32,7 @@ type ClubIntroCopy = {
   coachLabel: string;
   coachTitle: [string, string];
   coachSub: string;
-  coachProfileLabels: { player: string; coaching: string; philosophy: string };
+  coachProfileLabels: { player: string; coaching: string; philosophy: string; expand: string; collapse: string };
   coaches: CoachData[];
   activityLabel: string;
   activityTitle: [string, string];
@@ -101,7 +101,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["선수의 곁에서", "함께하는 사람들"],
     coachSub: "G.C.S.C의 지도자는 가르치는 사람이 아닙니다. 선수의 길을 함께 설계하는 파트너입니다.",
-    coachProfileLabels: { player: "선수경력", coaching: "지도경력", philosophy: "지도 철학" },
+    coachProfileLabels: { player: "선수경력", coaching: "지도경력", philosophy: "지도 철학", expand: "경력 보기", collapse: "접기" },
     coaches: [
       {
         name: "천경필",
@@ -195,7 +195,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["The people who walk", "alongside every player"],
     coachSub: "Our coaches are not teachers. They are partners who design the player's path together.",
-    coachProfileLabels: { player: "Playing Career", coaching: "Coaching Career", philosophy: "Coaching Philosophy" },
+    coachProfileLabels: { player: "Playing Career", coaching: "Coaching Career", philosophy: "Coaching Philosophy", expand: "View Career", collapse: "Collapse" },
     coaches: [
       {
         name: "Cheon Gyeong-pil",
@@ -289,7 +289,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["選手のそばで", "共に歩む人たち"],
     coachSub: "G.C.S.Cの指導者は教える人ではありません。選手の道を共に設計するパートナーです。",
-    coachProfileLabels: { player: "選手経歴", coaching: "指導経歴", philosophy: "指導哲学" },
+    coachProfileLabels: { player: "選手経歴", coaching: "指導経歴", philosophy: "指導哲学", expand: "経歴を見る", collapse: "閉じる" },
     coaches: [
       {
         name: "チョン・ギョンピル",
@@ -383,7 +383,7 @@ const copy: Record<Locale, ClubIntroCopy> = {
     coachLabel: "Coaching Staff · G.C.S.C",
     coachTitle: ["陪伴在球员身旁的", "那些人"],
     coachSub: "G.C.S.C的教练不是传授者，而是与球员共同规划道路的伙伴。",
-    coachProfileLabels: { player: "球员经历", coaching: "执教经历", philosophy: "执教理念" },
+    coachProfileLabels: { player: "球员经历", coaching: "执教经历", philosophy: "执教理念", expand: "查看履历", collapse: "收起" },
     coaches: [
       {
         name: "千庆弼",
@@ -435,7 +435,7 @@ type PhotoMap = Record<CategoryKey, string | null>;
 type CoachCardProps = {
   coach: CoachData;
   i: number;
-  labels: { player: string; coaching: string; philosophy: string };
+  labels: { player: string; coaching: string; philosophy: string; expand: string; collapse: string };
 };
 
 function CoachCard({ coach, i, labels }: CoachCardProps) {
@@ -503,7 +503,7 @@ function CoachCard({ coach, i, labels }: CoachCardProps) {
         }`}
         >
           <span className={`text-[11px] font-bold uppercase tracking-[0.16em] ${isOpen ? "text-[#cc2222]" : "text-[#cc4444]"}`}>
-            {isOpen ? "접기" : "경력 보기"}
+            {isOpen ? labels.collapse : labels.expand}
           </span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
                className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
